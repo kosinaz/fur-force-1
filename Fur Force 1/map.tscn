@@ -1,7 +1,11 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://tileset.png" type="Texture" id=1]
 [ext_resource path="res://map.gd" type="Script" id=2]
+[ext_resource path="res://up_button_disabled.png" type="Texture" id=3]
+[ext_resource path="res://up_button.png" type="Texture" id=4]
+[ext_resource path="res://down_button_disabled.png" type="Texture" id=5]
+[ext_resource path="res://down_button.png" type="Texture" id=6]
 [ext_resource path="res://police.tscn" type="PackedScene" id=39]
 
 [sub_resource type="TileSet" id=1]
@@ -762,6 +766,18 @@
 58/shapes = [  ]
 58/z_index = 0
 
+[sub_resource type="InputEventAction" id=2]
+action = "ui_accept"
+
+[sub_resource type="ShortCut" id=3]
+shortcut = SubResource( 2 )
+
+[sub_resource type="InputEventAction" id=4]
+action = "ui_accept"
+
+[sub_resource type="ShortCut" id=5]
+shortcut = SubResource( 4 )
+
 [node name="Map" type="Node2D"]
 script = ExtResource( 2 )
 
@@ -773,4 +789,44 @@ cell_y_sort = true
 format = 1
 
 [node name="Police" parent="TileMap" instance=ExtResource( 39 )]
-position = Vector2( 1314, 698 )
+unique_name_in_owner = true
+position = Vector2( 256, 168 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -128.0
+margin_top = -128.0
+custom_constants/margin_right = 64
+custom_constants/margin_bottom = 64
+
+[node name="ButtonUp" type="TextureButton" parent="CanvasLayer/MarginContainer"]
+unique_name_in_owner = true
+margin_right = 64.0
+margin_bottom = 64.0
+hint_tooltip = "Change Lane 
+[Space, Enter]"
+shortcut_in_tooltip = false
+shortcut = SubResource( 3 )
+texture_normal = ExtResource( 4 )
+texture_disabled = ExtResource( 3 )
+
+[node name="ButtonDown" type="TextureButton" parent="CanvasLayer/MarginContainer"]
+unique_name_in_owner = true
+visible = false
+margin_right = 64.0
+margin_bottom = 64.0
+hint_tooltip = "Change Lane 
+[Space, Enter]"
+shortcut_in_tooltip = false
+shortcut = SubResource( 5 )
+texture_normal = ExtResource( 6 )
+texture_disabled = ExtResource( 5 )
+
+[connection signal="changed_lane" from="TileMap/Police" to="." method="_on_changed_lane"]
+[connection signal="pressed" from="CanvasLayer/MarginContainer/ButtonUp" to="." method="_on_button_up_pressed"]
+[connection signal="pressed" from="CanvasLayer/MarginContainer/ButtonDown" to="." method="_on_button_down_pressed"]

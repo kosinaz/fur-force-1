@@ -37,3 +37,19 @@ func _ready():
 			ne.shuffle()
 			for x in range(2, length - 1):
 				$TileMap.set_cell(x + i * length, y, ne[x - 2])
+
+func _on_button_up_pressed():
+	$"%Police".action_pressed = true
+	$"%ButtonUp".hide()
+	$"%ButtonDown".show()
+	$"%ButtonDown".set_disabled(true)
+
+func _on_button_down_pressed():
+	$"%Police".action_pressed = true
+	$"%ButtonDown".hide()
+	$"%ButtonUp".show()
+	$"%ButtonUp".set_disabled(true)
+
+func _on_changed_lane():
+	$"%ButtonUp".set_disabled(false)
+	$"%ButtonDown".set_disabled(false)
