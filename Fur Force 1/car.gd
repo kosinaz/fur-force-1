@@ -33,8 +33,3 @@ func _process(_delta):
 				state = states.MOVING_FORWARD
 				right_lane = true
 				emit_signal("changed_lane")
-		
-
-
-func _on_button_up_pressed():
-	pass # Replace with function body.

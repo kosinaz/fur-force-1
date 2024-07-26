@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=2]
+
+[sub_resource type="StreamTexture" id=1]
+flags = 4
+load_path = "res://.import/building_left_1.png-43c52d65fac8033830179b3dd73fb1a0.stex"
+
+[sub_resource type="StreamTexture" id=2]
+flags = 4
+load_path = "res://.import/roof_left_1.png-7cc500fa59e99005b251dc7c8c17dd4a.stex"
+
+[node name="Building" type="Node2D"]
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = SubResource( 1 )
+
+[node name="Sprite2" type="Sprite" parent="."]
+texture = SubResource( 2 )

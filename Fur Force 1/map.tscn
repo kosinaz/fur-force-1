@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://tileset.png" type="Texture" id=1]
 [ext_resource path="res://map.gd" type="Script" id=2]
@@ -6,6 +6,14 @@
 [ext_resource path="res://up_button.png" type="Texture" id=4]
 [ext_resource path="res://down_button_disabled.png" type="Texture" id=5]
 [ext_resource path="res://down_button.png" type="Texture" id=6]
+[ext_resource path="res://car_left_1.tscn" type="PackedScene" id=7]
+[ext_resource path="res://car_left_2.tscn" type="PackedScene" id=8]
+[ext_resource path="res://car_right_2.tscn" type="PackedScene" id=9]
+[ext_resource path="res://car_right_1.tscn" type="PackedScene" id=10]
+[ext_resource path="res://car_right_3.tscn" type="PackedScene" id=11]
+[ext_resource path="res://car_left_3.tscn" type="PackedScene" id=12]
+[ext_resource path="res://car_left_4.tscn" type="PackedScene" id=13]
+[ext_resource path="res://car_right_4.tscn" type="PackedScene" id=14]
 [ext_resource path="res://police.tscn" type="PackedScene" id=39]
 
 [sub_resource type="TileSet" id=1]
@@ -791,6 +799,30 @@ format = 1
 [node name="Police" parent="TileMap" instance=ExtResource( 39 )]
 unique_name_in_owner = true
 position = Vector2( 256, 168 )
+
+[node name="CarLeft1" parent="TileMap" instance=ExtResource( 7 )]
+position = Vector2( 1218, 636 )
+
+[node name="CarLeft2" parent="TileMap" instance=ExtResource( 8 )]
+position = Vector2( 1938, 996 )
+
+[node name="CarLeft3" parent="TileMap" instance=ExtResource( 12 )]
+position = Vector2( 3378, 1716 )
+
+[node name="CarLeft4" parent="TileMap" instance=ExtResource( 13 )]
+position = Vector2( 2658, 1356 )
+
+[node name="CarRight1" parent="TileMap" instance=ExtResource( 10 )]
+position = Vector2( 828, 456 )
+
+[node name="CarRight2" parent="TileMap" instance=ExtResource( 9 )]
+position = Vector2( 2988, 1536 )
+
+[node name="CarRight3" parent="TileMap" instance=ExtResource( 11 )]
+position = Vector2( 1548, 816 )
+
+[node name="CarRight4" parent="TileMap" instance=ExtResource( 14 )]
+position = Vector2( 2268, 1176 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
