@@ -37,6 +37,20 @@ func _ready():
 			ne.shuffle()
 			for x in range(2, length - 1):
 				$TileMap.set_cell(x + i * length, y, ne[x - 2])
+	randomize()
+	for segment in range(6):
+		var car_lefts = range(1, 5)
+		var car_rights = range(1, 5)
+		car_lefts.shuffle()
+		car_rights.shuffle()
+		for i in range(4):
+			var mod = [-2, 2][randi() % 2]
+			var car_left = get_node("%CarLeft" + str(car_lefts[i])).duplicate()
+			car_left.position = $TileMap.map_to_world(Vector2(segment * 40 + 15 + mod + i * 10, 0)) + Vector2(0, 24)
+			$TileMap.add_child(car_left)
+			var car_right = get_node("%CarRight" + str(car_rights[i])).duplicate()
+			car_right.position = $TileMap.map_to_world(Vector2(segment * 40 + 15 - mod + i * 10, 0)) + Vector2(0, 40)
+			$TileMap.add_child(car_right)
 
 func _on_button_up_pressed():
 	$"%Police".action_pressed = true

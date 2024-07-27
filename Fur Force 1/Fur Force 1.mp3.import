@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Fur Force 1.mp3-37332e4a8f502c88df6f22c06ec9f0a4.mp3str"
+
+[deps]
+
+source_file="res://Fur Force 1.mp3"
+dest_files=[ "res://.import/Fur Force 1.mp3-37332e4a8f502c88df6f22c06ec9f0a4.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

@@ -13,7 +13,7 @@ var right_lane = true
 var action_pressed = false
 
 func _process(_delta):
-	position += Vector2(4, 2)
+	position += Vector2(3, 1.5)
 	if state == states.MOVING_FORWARD:
 		if action_pressed:
 			state = states.CHANGING_LANES
