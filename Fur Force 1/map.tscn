@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://tileset.png" type="Texture" id=1]
 [ext_resource path="res://map.gd" type="Script" id=2]
@@ -15,6 +15,7 @@
 [ext_resource path="res://car_left_4.tscn" type="PackedScene" id=13]
 [ext_resource path="res://car_right_4.tscn" type="PackedScene" id=14]
 [ext_resource path="res://Fur Force 1.mp3" type="AudioStream" id=15]
+[ext_resource path="res://man.tscn" type="PackedScene" id=16]
 [ext_resource path="res://police.tscn" type="PackedScene" id=39]
 
 [sub_resource type="TileSet" id=1]
@@ -788,6 +789,7 @@ action = "ui_accept"
 shortcut = SubResource( 4 )
 
 [node name="Map" type="Node2D"]
+scale = Vector2( 2, 2 )
 script = ExtResource( 2 )
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -796,6 +798,9 @@ tile_set = SubResource( 1 )
 cell_size = Vector2( 144, 72 )
 cell_y_sort = true
 format = 1
+
+[node name="Man" parent="TileMap" instance=ExtResource( 16 )]
+unique_name_in_owner = true
 
 [node name="Police" parent="TileMap" instance=ExtResource( 39 )]
 unique_name_in_owner = true

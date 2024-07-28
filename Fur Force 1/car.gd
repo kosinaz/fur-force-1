@@ -11,8 +11,11 @@ enum states {
 var state = states.MOVING_FORWARD
 var right_lane = true
 var action_pressed = false
+var arrived = false
 
 func _process(_delta):
+	if arrived:
+		return
 	position += Vector2(3, 1.5)
 	if state == states.MOVING_FORWARD:
 		if action_pressed:
