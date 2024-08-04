@@ -1,6 +1,9 @@
 extends Node2D
 
 var length = 10
+var car_left_map_positions = {}
+var car_right_map_positions = {}
+var lives = 3
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -48,16 +51,36 @@ func _ready():
 		for i in range(4):
 			var mod = [-2, 2][randi() % 2]
 			var car_left = get_node("%CarLeft" + str(car_lefts[i])).duplicate()
-			car_left.position = $TileMap.map_to_world(Vector2(segment * 40 + 15 + mod + i * 10, 0)) + Vector2(0, 24)
+			var car_left_map_position = Vector2(segment * 40 + 15 + mod + i * 10, 0)
+			car_left_map_positions[car_left_map_position] = car_left
+			car_left.position = $TileMap.map_to_world(car_left_map_position) + Vector2(19, 34)
 			$TileMap.add_child(car_left)
 			var car_right = get_node("%CarRight" + str(car_rights[i])).duplicate()
-			car_right.position = $TileMap.map_to_world(Vector2(segment * 40 + 15 - mod + i * 10, 0)) + Vector2(0, 40)
+			var car_right_map_position  = Vector2(segment * 40 + 15 - mod + i * 10, 0)
+			car_right_map_positions[car_right_map_position] = car_right
+			car_right.position = $TileMap.map_to_world(car_right_map_position) + Vector2(0, 40)
 			$TileMap.add_child(car_right)
 
-
 func _process(_delta):
-	if $TileMap.world_to_map($"%Police".position) == Vector2(219, 0):
+	var player_map_position = $TileMap.world_to_map($"%Police".position)
+	if player_map_position == Vector2(219, 0):
 		$"%Police".arrived = true
+	elif $"%Police".right_lane:
+		if car_right_map_positions.has(player_map_position):
+			hit(car_right_map_positions[player_map_position])
+			car_right_map_positions.erase(player_map_position)
+	else:
+		if car_left_map_positions.has(player_map_position):
+			hit(car_left_map_positions[player_map_position])
+			car_left_map_positions.erase(player_map_position)
+
+func hit(car):
+	if lives > 0:
+		lives -= 1
+		car.get_node("AnimationPlayer").play("jump")
+	else:
+		$"%Police".arrived = true
+	
 
 func _on_button_up_pressed():
 	$"%Police".action_pressed = true
