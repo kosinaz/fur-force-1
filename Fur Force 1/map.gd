@@ -3,7 +3,7 @@ extends Node2D
 var length = 10
 var car_left_map_positions = {}
 var car_right_map_positions = {}
-var lives = 3
+var crosses = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -75,11 +75,13 @@ func _process(_delta):
 			car_left_map_positions.erase(player_map_position)
 
 func hit(car):
-	if lives > 0:
-		lives -= 1
+	if crosses < 3:
+		$"%Crosses".get_child(crosses).show()
+		crosses += 1
 		car.get_node("AnimationPlayer").play("jump")
 	else:
 		$"%Police".arrived = true
+		$"%GameOver".show()
 	
 
 func _on_button_up_pressed():
@@ -97,3 +99,7 @@ func _on_button_down_pressed():
 func _on_changed_lane():
 	$"%ButtonUp".set_disabled(false)
 	$"%ButtonDown".set_disabled(false)
+
+func _on_try_again_pressed():
+# warning-ignore:return_value_discarded
+	get_tree().reload_current_scene()

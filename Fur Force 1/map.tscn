@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://tileset.png" type="Texture" id=1]
 [ext_resource path="res://map.gd" type="Script" id=2]
@@ -16,6 +16,9 @@
 [ext_resource path="res://car_right_4.tscn" type="PackedScene" id=14]
 [ext_resource path="res://Fur Force 1.mp3" type="AudioStream" id=15]
 [ext_resource path="res://man.tscn" type="PackedScene" id=16]
+[ext_resource path="res://check_square_grey.png" type="Texture" id=17]
+[ext_resource path="res://check_square_grey_cross.png" type="Texture" id=18]
+[ext_resource path="res://Slackey.ttf" type="DynamicFontData" id=19]
 [ext_resource path="res://police.tscn" type="PackedScene" id=39]
 
 [sub_resource type="TileSet" id=1]
@@ -788,6 +791,18 @@ action = "ui_accept"
 [sub_resource type="ShortCut" id=5]
 shortcut = SubResource( 4 )
 
+[sub_resource type="DynamicFont" id=6]
+size = 32
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 19 )
+
+[sub_resource type="DynamicFont" id=7]
+size = 32
+font_data = ExtResource( 19 )
+
 [node name="Map" type="Node2D"]
 scale = Vector2( 2, 2 )
 script = ExtResource( 2 )
@@ -865,6 +880,94 @@ shortcut = SubResource( 5 )
 texture_normal = ExtResource( 6 )
 texture_disabled = ExtResource( 5 )
 
+[node name="MarginContainer2" type="MarginContainer" parent="CanvasLayer"]
+margin_right = 40.0
+margin_bottom = 40.0
+custom_constants/margin_top = 20
+custom_constants/margin_left = 20
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/MarginContainer2"]
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 124.0
+margin_bottom = 52.0
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/MarginContainer2/HBoxContainer"]
+margin_right = 32.0
+margin_bottom = 32.0
+texture = ExtResource( 17 )
+
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/MarginContainer2/HBoxContainer"]
+margin_left = 36.0
+margin_right = 68.0
+margin_bottom = 32.0
+texture = ExtResource( 17 )
+
+[node name="TextureRect3" type="TextureRect" parent="CanvasLayer/MarginContainer2/HBoxContainer"]
+margin_left = 72.0
+margin_right = 104.0
+margin_bottom = 32.0
+texture = ExtResource( 17 )
+
+[node name="Crosses" type="HBoxContainer" parent="CanvasLayer/MarginContainer2"]
+unique_name_in_owner = true
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 124.0
+margin_bottom = 52.0
+
+[node name="Cross1" type="TextureRect" parent="CanvasLayer/MarginContainer2/Crosses"]
+visible = false
+margin_right = 32.0
+margin_bottom = 32.0
+texture = ExtResource( 18 )
+
+[node name="Cross2" type="TextureRect" parent="CanvasLayer/MarginContainer2/Crosses"]
+visible = false
+margin_left = 36.0
+margin_right = 68.0
+margin_bottom = 32.0
+texture = ExtResource( 18 )
+
+[node name="Cross3" type="TextureRect" parent="CanvasLayer/MarginContainer2/Crosses"]
+visible = false
+margin_left = 72.0
+margin_right = 104.0
+margin_bottom = 32.0
+texture = ExtResource( 18 )
+
+[node name="GameOver" type="MarginContainer" parent="CanvasLayer"]
+unique_name_in_owner = true
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -223.5
+margin_top = -46.5
+margin_right = 223.5
+margin_bottom = 46.5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/GameOver"]
+margin_right = 447.0
+margin_bottom = 100.0
+
+[node name="Label" type="Label" parent="CanvasLayer/GameOver/VBoxContainer"]
+margin_right = 447.0
+margin_bottom = 45.0
+custom_fonts/font = SubResource( 6 )
+text = "You hit too many cars!"
+align = 1
+
+[node name="TryAgain" type="Button" parent="CanvasLayer/GameOver/VBoxContainer"]
+margin_left = 120.0
+margin_top = 49.0
+margin_right = 327.0
+margin_bottom = 100.0
+size_flags_horizontal = 4
+custom_fonts/font = SubResource( 7 )
+text = "Try again!"
+
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 15 )
 autoplay = true
@@ -872,3 +975,4 @@ autoplay = true
 [connection signal="changed_lane" from="TileMap/Police" to="." method="_on_changed_lane"]
 [connection signal="pressed" from="CanvasLayer/MarginContainer/ButtonUp" to="." method="_on_button_up_pressed"]
 [connection signal="pressed" from="CanvasLayer/MarginContainer/ButtonDown" to="." method="_on_button_down_pressed"]
+[connection signal="pressed" from="CanvasLayer/GameOver/VBoxContainer/TryAgain" to="." method="_on_try_again_pressed"]
