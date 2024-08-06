@@ -1,0 +1,329 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://Slackey.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://hope.png" type="Texture" id=2]
+[ext_resource path="res://ace.png" type="Texture" id=3]
+[ext_resource path="res://check_square_color_square.png" type="Texture" id=4]
+[ext_resource path="res://blossom.png" type="Texture" id=5]
+[ext_resource path="res://chilli.png" type="Texture" id=6]
+[ext_resource path="res://menu.gd" type="Script" id=7]
+[ext_resource path="res://check_square_color_checkmark.png" type="Texture" id=8]
+[ext_resource path="res://check_square_color_cross.png" type="Texture" id=9]
+[ext_resource path="res://button_font.tres" type="DynamicFont" id=10]
+
+[sub_resource type="Animation" id=10]
+resource_name = "say"
+length = 8.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:percent_visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../../Ace:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 3.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("../../Blossom:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 3.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("../../Chilli:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 4.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+
+[sub_resource type="DynamicFont" id=9]
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=11]
+size = 32
+font_data = ExtResource( 1 )
+
+[node name="Menu" type="Node2D"]
+script = ExtResource( 7 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer"]
+root_node = NodePath("../MarginContainer/VBoxContainer/HBoxContainer/Briefing")
+autoplay = "say"
+anims/say = SubResource( 10 )
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/margin_right = 32
+custom_constants/margin_top = 32
+custom_constants/margin_left = 32
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer"]
+margin_left = 32.0
+margin_top = 32.0
+margin_right = 992.0
+margin_bottom = 600.0
+custom_constants/separation = 16
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/MarginContainer/VBoxContainer"]
+margin_right = 960.0
+margin_bottom = 96.0
+custom_constants/separation = 32
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/MarginContainer/VBoxContainer/HBoxContainer"]
+margin_right = 96.0
+margin_bottom = 96.0
+rect_min_size = Vector2( 96, 96 )
+texture = ExtResource( 2 )
+expand = true
+
+[node name="Briefing" type="RichTextLabel" parent="CanvasLayer/MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+margin_left = 128.0
+margin_right = 828.0
+margin_bottom = 96.0
+rect_min_size = Vector2( 700, 0 )
+custom_fonts/normal_font = SubResource( 9 )
+bbcode_enabled = true
+bbcode_text = "Alright, team, we have a situation. There's a fire at the old clock tower, and it's spreading fast.
+For this mission I will need..."
+text = "Alright, team, we have a situation. There's a fire at the old clock tower, and it's spreading fast.
+For this mission I will need..."
+scroll_active = false
+
+[node name="Ace" type="HBoxContainer" parent="CanvasLayer/MarginContainer/VBoxContainer"]
+margin_top = 112.0
+margin_right = 960.0
+margin_bottom = 208.0
+custom_constants/separation = 32
+alignment = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/MarginContainer/VBoxContainer/Ace"]
+margin_left = 572.0
+margin_right = 668.0
+margin_bottom = 96.0
+rect_min_size = Vector2( 96, 96 )
+texture = ExtResource( 3 )
+expand = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/MarginContainer/VBoxContainer/Ace"]
+margin_left = 700.0
+margin_right = 960.0
+margin_bottom = 96.0
+custom_constants/separation = 16
+
+[node name="Label" type="RichTextLabel" parent="CanvasLayer/MarginContainer/VBoxContainer/Ace/HBoxContainer"]
+margin_top = 28.0
+margin_right = 180.0
+margin_bottom = 68.0
+rect_min_size = Vector2( 180, 40 )
+size_flags_vertical = 4
+custom_fonts/normal_font = SubResource( 11 )
+bbcode_enabled = true
+bbcode_text = "Ace"
+text = "Ace"
+scroll_active = false
+
+[node name="Ace" type="TextureButton" parent="CanvasLayer/MarginContainer/VBoxContainer/Ace/HBoxContainer"]
+unique_name_in_owner = true
+margin_left = 196.0
+margin_top = 16.0
+margin_right = 260.0
+margin_bottom = 80.0
+size_flags_vertical = 4
+texture_normal = ExtResource( 4 )
+
+[node name="AceYes" type="TextureButton" parent="CanvasLayer/MarginContainer/VBoxContainer/Ace/HBoxContainer"]
+unique_name_in_owner = true
+visible = false
+margin_left = 276.0
+margin_top = 16.0
+margin_right = 340.0
+margin_bottom = 80.0
+size_flags_vertical = 4
+texture_normal = ExtResource( 8 )
+
+[node name="AceNo" type="TextureButton" parent="CanvasLayer/MarginContainer/VBoxContainer/Ace/HBoxContainer"]
+unique_name_in_owner = true
+visible = false
+margin_left = 276.0
+margin_top = 16.0
+margin_right = 340.0
+margin_bottom = 80.0
+size_flags_vertical = 4
+texture_normal = ExtResource( 9 )
+
+[node name="Blossom" type="HBoxContainer" parent="CanvasLayer/MarginContainer/VBoxContainer"]
+margin_top = 224.0
+margin_right = 960.0
+margin_bottom = 320.0
+custom_constants/separation = 32
+alignment = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/MarginContainer/VBoxContainer/Blossom"]
+margin_left = 572.0
+margin_right = 668.0
+margin_bottom = 96.0
+rect_min_size = Vector2( 96, 96 )
+texture = ExtResource( 5 )
+expand = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/MarginContainer/VBoxContainer/Blossom"]
+margin_left = 700.0
+margin_right = 960.0
+margin_bottom = 96.0
+custom_constants/separation = 16
+
+[node name="Label" type="RichTextLabel" parent="CanvasLayer/MarginContainer/VBoxContainer/Blossom/HBoxContainer"]
+margin_top = 28.0
+margin_right = 180.0
+margin_bottom = 68.0
+rect_min_size = Vector2( 180, 40 )
+size_flags_vertical = 4
+custom_fonts/normal_font = SubResource( 11 )
+bbcode_enabled = true
+bbcode_text = "Blossom"
+text = "Blossom"
+scroll_active = false
+
+[node name="Blossom" type="TextureButton" parent="CanvasLayer/MarginContainer/VBoxContainer/Blossom/HBoxContainer"]
+unique_name_in_owner = true
+margin_left = 196.0
+margin_top = 16.0
+margin_right = 260.0
+margin_bottom = 80.0
+size_flags_vertical = 4
+texture_normal = ExtResource( 4 )
+
+[node name="BlossomYes" type="TextureButton" parent="CanvasLayer/MarginContainer/VBoxContainer/Blossom/HBoxContainer"]
+unique_name_in_owner = true
+visible = false
+margin_left = 276.0
+margin_top = 16.0
+margin_right = 340.0
+margin_bottom = 80.0
+size_flags_vertical = 4
+texture_normal = ExtResource( 8 )
+
+[node name="BlossomNo" type="TextureButton" parent="CanvasLayer/MarginContainer/VBoxContainer/Blossom/HBoxContainer"]
+unique_name_in_owner = true
+visible = false
+margin_left = 276.0
+margin_top = 16.0
+margin_right = 340.0
+margin_bottom = 80.0
+size_flags_vertical = 4
+texture_normal = ExtResource( 9 )
+
+[node name="Chilli" type="HBoxContainer" parent="CanvasLayer/MarginContainer/VBoxContainer"]
+margin_top = 336.0
+margin_right = 960.0
+margin_bottom = 432.0
+custom_constants/separation = 32
+alignment = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/MarginContainer/VBoxContainer/Chilli"]
+margin_left = 572.0
+margin_right = 668.0
+margin_bottom = 96.0
+rect_min_size = Vector2( 96, 96 )
+texture = ExtResource( 6 )
+expand = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/MarginContainer/VBoxContainer/Chilli"]
+margin_left = 700.0
+margin_right = 960.0
+margin_bottom = 96.0
+custom_constants/separation = 16
+
+[node name="Label" type="RichTextLabel" parent="CanvasLayer/MarginContainer/VBoxContainer/Chilli/HBoxContainer"]
+margin_top = 28.0
+margin_right = 180.0
+margin_bottom = 68.0
+rect_min_size = Vector2( 180, 40 )
+size_flags_vertical = 4
+custom_fonts/normal_font = SubResource( 11 )
+bbcode_enabled = true
+bbcode_text = "Chilli"
+text = "Chilli"
+scroll_active = false
+
+[node name="Chilli" type="TextureButton" parent="CanvasLayer/MarginContainer/VBoxContainer/Chilli/HBoxContainer"]
+unique_name_in_owner = true
+margin_left = 196.0
+margin_top = 16.0
+margin_right = 260.0
+margin_bottom = 80.0
+size_flags_vertical = 4
+texture_normal = ExtResource( 4 )
+
+[node name="ChilliYes" type="TextureButton" parent="CanvasLayer/MarginContainer/VBoxContainer/Chilli/HBoxContainer"]
+unique_name_in_owner = true
+visible = false
+margin_left = 276.0
+margin_top = 16.0
+margin_right = 340.0
+margin_bottom = 80.0
+size_flags_vertical = 4
+texture_normal = ExtResource( 8 )
+
+[node name="ChilliNo" type="TextureButton" parent="CanvasLayer/MarginContainer/VBoxContainer/Chilli/HBoxContainer"]
+unique_name_in_owner = true
+visible = false
+margin_left = 276.0
+margin_top = 16.0
+margin_right = 340.0
+margin_bottom = 80.0
+size_flags_vertical = 4
+texture_normal = ExtResource( 9 )
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/MarginContainer/VBoxContainer"]
+margin_top = 448.0
+margin_right = 960.0
+margin_bottom = 464.0
+custom_constants/margin_top = 16
+
+[node name="GoButton" type="Button" parent="CanvasLayer/MarginContainer/VBoxContainer/MarginContainer"]
+unique_name_in_owner = true
+visible = false
+margin_left = 405.0
+margin_top = 16.0
+margin_right = 555.0
+margin_bottom = 67.0
+size_flags_horizontal = 4
+custom_fonts/font = ExtResource( 10 )
+text = "Let' Go!"
+
+[connection signal="pressed" from="CanvasLayer/MarginContainer/VBoxContainer/Ace/HBoxContainer/Ace" to="." method="_on_button_pressed" binds= [ "Ace" ]]
+[connection signal="pressed" from="CanvasLayer/MarginContainer/VBoxContainer/Blossom/HBoxContainer/Blossom" to="." method="_on_button_pressed" binds= [ "Blossom" ]]
+[connection signal="pressed" from="CanvasLayer/MarginContainer/VBoxContainer/Chilli/HBoxContainer/Chilli" to="." method="_on_button_pressed" binds= [ "Chilli" ]]
+[connection signal="pressed" from="CanvasLayer/MarginContainer/VBoxContainer/MarginContainer/GoButton" to="." method="_on_go_pressed"]

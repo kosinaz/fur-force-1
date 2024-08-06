@@ -65,6 +65,7 @@ func _process(_delta):
 	var player_map_position = $TileMap.world_to_map($"%Police".position)
 	if player_map_position == Vector2(219, 0):
 		$"%Police".arrived = true
+		$"%Win".show()
 	elif $"%Police".right_lane:
 		if car_right_map_positions.has(player_map_position):
 			hit(car_right_map_positions[player_map_position])
@@ -103,3 +104,7 @@ func _on_changed_lane():
 func _on_try_again_pressed():
 # warning-ignore:return_value_discarded
 	get_tree().reload_current_scene()
+
+func _on_continue_pressed():
+# warning-ignore:return_value_discarded
+	get_tree().change_scene("res://menu.tscn")
