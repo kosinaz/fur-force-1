@@ -18,7 +18,7 @@ texture = ExtResource( 1 )
 visible = false
 texture = ExtResource( 4 )
 
-[node name="Chilli" type="Sprite" parent="Sprite"]
+[node name="Chili" type="Sprite" parent="Sprite"]
 visible = false
 texture = ExtResource( 3 )
 

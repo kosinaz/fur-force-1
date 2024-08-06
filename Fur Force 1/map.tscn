@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://map.gd" type="Script" id=2]
@@ -41,6 +41,18 @@ outline_color = Color( 0, 0, 0, 1 )
 use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 19 )
+
+[sub_resource type="InputEventAction" id=10]
+action = "ui_accept"
+
+[sub_resource type="ShortCut" id=11]
+shortcut = SubResource( 10 )
+
+[sub_resource type="InputEventAction" id=12]
+action = "ui_accept"
+
+[sub_resource type="ShortCut" id=13]
+shortcut = SubResource( 12 )
 
 [node name="Map" type="Node2D"]
 scale = Vector2( 2, 2 )
@@ -205,6 +217,8 @@ margin_right = 327.0
 margin_bottom = 100.0
 size_flags_horizontal = 4
 custom_fonts/font = ExtResource( 20 )
+shortcut_in_tooltip = false
+shortcut = SubResource( 11 )
 text = "Try again!"
 
 [node name="Win" type="MarginContainer" parent="CanvasLayer"]
@@ -237,6 +251,8 @@ margin_right = 327.0
 margin_bottom = 100.0
 size_flags_horizontal = 4
 custom_fonts/font = ExtResource( 20 )
+shortcut_in_tooltip = false
+shortcut = SubResource( 13 )
 text = "Continue"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]

@@ -7,7 +7,7 @@ var crosses = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$"%Police/Sprite".get_node(get_parent().mission_name).show()
+	$"%Police/Sprite".get_node(get_parent().get_mission_name()).show()
 	for i in range(31):
 		for y in [-8, -7, -5, -4, -2, -1, 1, 2, 4, 5, 7, 8]:
 			$TileMap.set_cell(i * length, y, 2)
@@ -103,9 +103,9 @@ func _on_changed_lane():
 	$"%ButtonDown".set_disabled(false)
 
 func _on_try_again_pressed():
-# warning-ignore:return_value_discarded
-	get_tree().reload_current_scene()
+	get_parent().next_mission()
+	queue_free()
 
 func _on_continue_pressed():
-# warning-ignore:return_value_discarded
-	get_tree().change_scene("res://menu.tscn")
+	get_parent().next_mission()
+	queue_free()
