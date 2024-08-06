@@ -25,5 +25,7 @@ func _on_button_pressed(name):
 		get_node("%" + name + "No").show()
 
 func _on_go_pressed():
-# warning-ignore:return_value_discarded
-	get_tree().change_scene("res://map.tscn")
+	get_parent().mission_name = missions[mission].name
+	var map = preload("res://map.tscn").instance()
+	get_parent().add_child(map)
+	queue_free()

@@ -7,6 +7,7 @@ var crosses = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	$"%Police/Sprite".get_node(get_parent().mission_name).show()
 	for i in range(31):
 		for y in [-8, -7, -5, -4, -2, -1, 1, 2, 4, 5, 7, 8]:
 			$TileMap.set_cell(i * length, y, 2)
