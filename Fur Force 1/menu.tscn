@@ -208,11 +208,11 @@ action = "chili"
 [sub_resource type="ShortCut" id=17]
 shortcut = SubResource( 16 )
 
-[sub_resource type="InputEventAction" id=18]
+[sub_resource type="InputEventAction" id=20]
 action = "ui_accept"
 
 [sub_resource type="ShortCut" id=19]
-shortcut = SubResource( 18 )
+shortcut = SubResource( 20 )
 
 [node name="Menu" type="Node2D"]
 script = ExtResource( 7 )
@@ -235,7 +235,7 @@ custom_constants/margin_left = 32
 margin_left = 32.0
 margin_top = 32.0
 margin_right = 992.0
-margin_bottom = 600.0
+margin_bottom = 576.0
 custom_constants/separation = 16
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/MarginContainer/VBoxContainer"]
@@ -422,8 +422,8 @@ rect_min_size = Vector2( 180, 40 )
 size_flags_vertical = 4
 custom_fonts/normal_font = SubResource( 11 )
 bbcode_enabled = true
-bbcode_text = "Chilli"
-text = "Chilli"
+bbcode_text = "Chili"
+text = "Chili"
 scroll_active = false
 
 [node name="Chili" type="TextureButton" parent="CanvasLayer/MarginContainer/VBoxContainer/Chili/HBoxContainer"]
@@ -466,15 +466,15 @@ custom_constants/margin_top = 16
 [node name="GoButton" type="Button" parent="CanvasLayer/MarginContainer/VBoxContainer/MarginContainer"]
 unique_name_in_owner = true
 visible = false
-margin_left = 405.0
+margin_left = 395.0
 margin_top = 16.0
-margin_right = 555.0
+margin_right = 565.0
 margin_bottom = 67.0
 size_flags_horizontal = 4
 custom_fonts/font = ExtResource( 10 )
 shortcut_in_tooltip = false
 shortcut = SubResource( 19 )
-text = "Let' Go!"
+text = "Let's Go!"
 
 [connection signal="pressed" from="CanvasLayer/MarginContainer/VBoxContainer/Ace/HBoxContainer/Ace" to="." method="_on_button_pressed" binds= [ "Ace" ]]
 [connection signal="pressed" from="CanvasLayer/MarginContainer/VBoxContainer/Blossom/HBoxContainer/Blossom" to="." method="_on_button_pressed" binds= [ "Blossom" ]]
