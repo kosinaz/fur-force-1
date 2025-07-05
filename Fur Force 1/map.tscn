@@ -115,6 +115,7 @@ margin_bottom = 64.0
 hint_tooltip = "Change Lane 
 [Space, Enter]"
 shortcut_in_tooltip = false
+action_mode = 0
 shortcut = SubResource( 3 )
 texture_normal = ExtResource( 4 )
 texture_disabled = ExtResource( 3 )
@@ -127,6 +128,7 @@ margin_bottom = 64.0
 hint_tooltip = "Change Lane 
 [Space, Enter]"
 shortcut_in_tooltip = false
+action_mode = 0
 shortcut = SubResource( 5 )
 texture_normal = ExtResource( 6 )
 texture_disabled = ExtResource( 5 )

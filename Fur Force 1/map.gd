@@ -41,8 +41,9 @@ func _ready():
 			ne.shuffle()
 			for x in range(2, length - 1):
 				$TileMap.set_cell(x + i * length, y, ne[x - 2])
-	$TileMap.set_cell(219, -1, 0)
-	$"%Man".position = $TileMap.map_to_world(Vector2(219, -1)) + Vector2(0, 20)
+#	$TileMap.set_cell(219, -1, 0)
+	$TileMap.set_cell(189, -1, 0)
+	$"%Man".position = $TileMap.map_to_world(Vector2(189, -1)) + Vector2(0, 20)
 	randomize()
 	for segment in range(6):
 		var car_lefts = range(1, 5)
@@ -64,7 +65,7 @@ func _ready():
 
 func _process(_delta):
 	var player_map_position = $TileMap.world_to_map($"%Police".position)
-	if player_map_position == Vector2(219, 0):
+	if player_map_position == Vector2(189, 0):
 		$"%Police".arrived = true
 		$"%Win".show()
 	elif $"%Police".right_lane:
